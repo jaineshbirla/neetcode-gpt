@@ -13,11 +13,12 @@ class Solution:
         
         h = x
 
-        for i in range(len(weights)):
+        for i in range(len(weights) - 1):
 
             h = h @ weights[i] + biases[i]
 
-            if i < len(weights) - 1:
-                h = np.maximum(0, h)
-
-        return np.round(h, 5)
+            
+            h = np.maximum(0, h)
+        w = weights[-1]
+        b = biases[-1]
+        return np.round(h @ w + b, 5)
