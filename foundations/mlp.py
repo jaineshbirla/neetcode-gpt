@@ -15,10 +15,9 @@ class Solution:
 
         for i in range(len(weights) - 1):
 
-            h = h @ weights[i] + biases[i]
-
-            
-            h = np.maximum(0, h)
-        w = weights[-1]
-        b = biases[-1]
+            w = np.array(weights[i])
+            b = np.array(biases[i])
+            h = np.maximum(0, h @ w + b)
+        w = np.array(weights[-1])
+        b = np.array(biases[-1])
         return np.round(h @ w + b, 5)
